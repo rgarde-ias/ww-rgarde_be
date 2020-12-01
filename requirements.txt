@@ -1,0 +1,26 @@
+#
+# Python requirements for local development and CI/CD.
+#
+ias-pmi-cdk-common==1.2.2
+aws-cdk.core==1.60.0
+aws-cdk.aws-iam==1.60.0
+aws-cdk.aws-s3==1.60.0
+aws-cdk.aws-glue==1.60.0
+aws-cdk.aws-dynamodb==1.60.0
+invoke==1.4.1
+PyChef==0.3.0
+boto3==1.12.26
+awscli==1.18.49
+jsonschema==3.2.0
+pylint==2.5.3
+pytest==5.4.3
+
+# included Airflow runtime environment:
+apache-airflow==1.10.10
+airflow-contrib-v0-2-12==0.2.12
+requests==2.23.0
+python-dateutil==2.8.1
+mysqlclient==1.4.4
+
+# included in EMR runtime environment:
+pyspark==2.4.4

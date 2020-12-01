@@ -1,0 +1,131 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "$id": "http://integralads.com/schemas/etl-pm-pipeline-be/envs-config.json",
+  "type": "object",
+  "patternProperties": {
+    "^(dev|staging|prod)$": {
+      "type": "object",
+      "properties": {
+        "region": {
+          "type": "string",
+          "enum": ["us-east-1", "us-west-2"]
+        },
+        "airflow_cluster_id": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_-]*(\\.[a-z][a-z0-9_-]*)*$"
+        },
+        "airflow_daily_schedule": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "airflow_hourly_schedule": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "airflow_aws_conn_id": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9]*(_[a-z][a-z0-9]*)*$"
+        },
+        "airflow_firewall_db_conn_id": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9]*(_[a-z][a-z0-9]*)*$"
+        },
+        "emr_cluster_account": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9-]*$"
+        },
+        "emr_cluster_instance_type": {
+          "type": "string",
+          "pattern": "^[a-z0-9]+\\.[a-z0-9]+$"
+        },
+        "emr_cluster_instance_count": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "emr_cluster_ssh_keypair": {
+          "type": "string"
+        },
+        "raw_events_glue_db_name": {
+          "type": "string",
+          "pattern": "^[a-zA-Z][a-zA-Z0-9_]*$"
+        },
+        "jas_glue_db_name": {
+          "type": "string",
+          "pattern": "^[a-zA-Z][a-zA-Z0-9_]*$"
+        },
+        "jas_mart_glue_db_name": {
+          "type": "string",
+          "pattern": "^[a-zA-Z][a-zA-Z0-9_]*$"
+        },
+        "data_load_trigger_sns_topic_arn": {
+          "type": "string",
+          "pattern": "^arn:aws:sns:[a-z][a-z0-9-]*:[0-9]{12}:"
+        },
+        "sftp_bucket_name": {
+          "type": "string",
+          "pattern": "[a-zA-Z][a-zA-Z0-9_-]*"
+        },
+        "partners": {
+          "type": "object",
+          "properties": {
+            "facebook": {
+              "type": "object",
+              "properties": {
+                "airflow_schedule": {
+                  "anyOf": [
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                }
+              },
+              "required": [
+                "airflow_schedule"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "facebook"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "region",
+        "airflow_cluster_id",
+        "airflow_daily_schedule",
+        "airflow_hourly_schedule",
+        "airflow_aws_conn_id",
+        "airflow_firewall_db_conn_id",
+        "emr_cluster_account",
+        "emr_cluster_instance_type",
+        "emr_cluster_instance_count",
+        "raw_events_glue_db_name",
+        "jas_glue_db_name",
+        "jas_mart_glue_db_name",
+        "data_load_trigger_sns_topic_arn",
+        "sftp_bucket_name",
+        "partners"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "required": ["dev", "staging", "prod"],
+  "additionalProperties": false
+}

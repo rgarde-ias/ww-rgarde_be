@@ -1,0 +1,24 @@
+{
+  "dev": {
+    "region": "us-east-1",
+    "airflow_cluster_id": "airflow.aws.pmi.common",
+    "airflow_daily_schedule": null,
+    "airflow_hourly_schedule": null,
+    "airflow_aws_conn_id": "aws_default",
+    "airflow_firewall_db_conn_id": "firewall_db_rw",
+    "emr_cluster_account": "ias-dev",
+    "emr_cluster_instance_type": "m5.2xlarge",
+    "emr_cluster_instance_count": 2,
+    "emr_cluster_ssh_keypair": "ww-shared-dev",
+    "raw_events_glue_db_name": "partner_raw",
+    "jas_glue_db_name": "partner_jas",
+    "jas_mart_glue_db_name": "partner_jas_mart",
+    "data_load_trigger_sns_topic_arn": "arn:aws:sns:us-east-1:633215444626:etl-pm-s3-dw-ingestion-trigger",
+    "sftp_bucket_name": "ias-transfer-bcidev",
+    "partners": {
+      "facebook": {
+        "airflow_schedule": null
+      }
+    }
+  }
+}
